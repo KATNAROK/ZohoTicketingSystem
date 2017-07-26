@@ -8,13 +8,18 @@
 
 <p>There will be a generic form here to allow the testing of "pulling" data from it, and sending it with the new ticket!</p>
 
+<text>This button works, since it is not within the form!</text>
 <input type="button" id="PostTicket" value="POST A TICKET!" onclick="location.href='@Url.Action("PostTicket", "Ticket")'" />
+
+@*TODO: CREATE A ?BOOTSTRAP? FORM USING RAZOR SYNTAX, THIS ALLOWS THE SUBMIT BTN TO WORK WHILE BEING LINKED TO A CONTROLLER!*@
+
+
 
 
 @*The redSurveillance Webapp requires the use of a form to submit the details and create a ticket, therefore this method
     will most likely be the best way to postTickets!*@
 
-@*<form method="post" action="location.href='@Url.Action("PostTicket", "Home")'">
+@*<form method="post" action="location.href='@Url.Action("PostTicket", "Ticket")'">
         <input type="button" id="PostTicket" value="Post a Ticket!" />
     </form>*@
 
