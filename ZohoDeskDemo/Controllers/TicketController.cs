@@ -21,10 +21,12 @@ namespace ZohoDeskDemo.Controllers
             return View();
         }
 
-        public ActionResult PostTicket()
+        public ActionResult PostTicket(String Subject, String Email)
         {//Should the ticket processing be handled like this?
-            var createResponse = new TicketCreator();
-            var response = createResponse.TicketPostResponse();
+            var formManager = new FormDetails(Subject, Email);
+
+            var createResponse = new TicketManager();
+            var response = createResponse.TicketPostResponse(formManager);
             return Content(response, "application/json");
         }
     }

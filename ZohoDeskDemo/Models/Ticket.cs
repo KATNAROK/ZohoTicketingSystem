@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using RestSharp;
+using ZohoDeskDemo.Models;
 
 namespace ZohoDeskDemo.Models
 {
@@ -39,10 +40,12 @@ namespace ZohoDeskDemo.Models
         public string status { get; set; }
     }
 
-    public class TicketCreator
+    public class TicketManager
     {
-        public string TicketPostResponse()
+        public string TicketPostResponse(FormDetails footageRequestDetails)
         {
+            var footageDetails = "\n" + footageRequestDetails.subject + "\n" + footageRequestDetails.email;
+
             var client = new RestClient("https://desk.zoho.com");
 
             var postRequest = new RestRequest("/api/v1/tickets", Method.POST);
@@ -61,7 +64,7 @@ namespace ZohoDeskDemo.Models
             toSend.dueDate = "2017-07-20T16:16:16.000Z";
             toSend.departmentId = "186361000000006907"; //*Needs to change to RS details!*
             toSend.channel = "alexie"; //*Needs to change to RS details!*
-            toSend.description = "This is a ticket created through [ASP.NET MVC 5 Web App]";
+            toSend.description = footageDetails;
             toSend.priority = "High";
             toSend.classification = "Classification";
             toSend.assigneeId = "186361000000070005"; //*Needs to change to RS details!*
